@@ -4,8 +4,29 @@
  * @returns Foo, Bar or Qix if the number is divisible by 3, 5 or 7
  */
 function fooBarQix(number) {
-  // Do the logic here
-  return number;
+  const numSplited = number.toString().split('')
+  let result = ""
+  if (number % 3 === 0) {
+    result += "Foo"
+  }
+  if (number % 5 === 0) {
+    result += "Bar"
+  }
+  if (number % 7 === 0) {
+    result += "Qix"
+  }
+  for (let i = 0; i < numSplited.length; i++) {
+    if (numSplited[i] == 3) {
+      result += "Foo"
+    }
+    if (numSplited[i] == 5) {
+      result += "Bar"
+    }
+    if (numSplited[i] == 7) {
+      result += "Qix"
+    }
+  }
+  return result || number;
 }
 
 /**
