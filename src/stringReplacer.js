@@ -7,8 +7,14 @@
  * @example stringReplacer("hello world ${name", { name: "lucas" }) // "hello world ${name"
  */
 function stringReplacer(string, args) {
-  // Do the logic here
-  return string;
+  const stringSplited = string.split(" ")
+  return mapString = stringSplited.map(word => {
+    if (word.includes("${") && word.includes("}")) {
+      const value = word.substring(2, word.length - 1)
+      return args[value] || word;
+    }
+    return word
+  }).join(" ")
 }
 
 /**
@@ -18,8 +24,9 @@ function stringReplacer(string, args) {
  * @returns stringReplacer("hello world ${name}, it's a sunny day !", { name: "lucas" }) // "hello world lucas, it's a sunny day !"
  */
 function stringReplacerWithRegex(string, args) {
-  // Do the logic here
-  return string;
+  return string.replace(/\${(.*?)}/g, function(match, value) {
+    return args[value] || match
+  })
 }
 
 module.exports = { stringReplacer, stringReplacerWithRegex };
