@@ -18,8 +18,9 @@ function stringReplacer(string, args) {
  * @returns stringReplacer("hello world ${name}, it's a sunny day !", { name: "lucas" }) // "hello world lucas, it's a sunny day !"
  */
 function stringReplacerWithRegex(string, args) {
-  // Do the logic here
-  return string;
+  return string.replace(/\${(.*?)}/g, (match, tag) => {
+    return args[tag] ? args[tag] : match;
+  });
 }
 
 module.exports = { stringReplacer, stringReplacerWithRegex };
